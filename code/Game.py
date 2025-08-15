@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 import pygame
 #change
-from code.Const import WIN_WIDTH, WIN_HEIGHT
+from code.Const import WIN_WIDTH, WIN_HEIGHT, MENU_OPTION
+from code.Level import Level
 from code.Menu import Menu
 
 
@@ -12,11 +13,19 @@ class Game:
         self.window = pygame.display.set_mode(size=(WIN_WIDTH, WIN_HEIGHT))
 
     def run(self):
-        pygame.mixer_music.load('./asset/Menu.mp3')
-        pygame.mixer_music.play(-1)
+        pygame.mixer.music.load('./asset/Menu.mp3')
+        pygame.mixer.music.play(-1)
 
         while True:
             menu = Menu(self.window)
-            menu.run()
-            pass
+            menu_return = menu.run()
 
+            if menu_return in [MENU_OPTION[0], MENU_OPTION[1], MENU_OPTION[2]]:
+                initial_scores = [0, 0]
+                level = Level(self.window, "Level1", menu_return, initial_scores)
+                level_return = level.run()
+            elif menu_return == MENU_OPTION[4]:
+                pygame.quit()  # close window
+                quit()  # end game
+            else:
+                pass
