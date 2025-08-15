@@ -5,6 +5,7 @@ import pygame
 from pygame import Surface
 from code.EntityFactory import EntityFactory
 
+#LEVEL
 
 class Level:
     def __init__(self, window, name, game_mode, player_score):
