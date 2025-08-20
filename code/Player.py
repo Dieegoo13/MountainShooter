@@ -3,8 +3,9 @@
 import pygame
 
 from code.Const import ENTITY_SPEED, WIN_WIDTH, WIN_HEIGHT, PLAYER_KEY_UP, PLAYER_KEY_DOWN, PLAYER_KEY_RIGHT, \
-    PLAYER_KEY_LEFT
+    PLAYER_KEY_LEFT, PLAYER_KEY_SHOOT, ENTITY_SHOT_DELAY
 from code.Entity import Entity
+from code.PlayerShot import PlayerShot
 
 
 class Player(Entity):
@@ -15,6 +16,7 @@ class Player(Entity):
         self.speed = ENTITY_SPEED[player_id]
         self.lives = 3
         self.is_shooting = False
+        self.shot_delay = ENTITY_SHOT_DELAY[self.player_id]
 
     def move(self):
         pressed_key = pygame.key.get_pressed()
@@ -34,3 +36,15 @@ class Player(Entity):
         # RIGHT
         if pressed_key[PLAYER_KEY_RIGHT[self.player_id]] and self.rect.right < WIN_WIDTH:
             self.rect.x += self.speed
+
+    def shoot(self):
+        self.shot_delay -= 1
+        if self.shot_delay == 0:
+            self.shot_delay = ENTITY_SHOT_DELAY[self.player_id]
+            pressed_key = pygame.key.get_pressed()
+            if pressed_key[PLAYER_KEY_SHOOT[self.player_id]]:
+                return PlayerShot(
+                    img_name=f'{self.player_id}Shot.png',
+                    position=(self.rect.centerx, self.rect.centery),
+                    player_id=self.player_id
+                )
