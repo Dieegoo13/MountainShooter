@@ -4,6 +4,7 @@ import pygame
 COLOR_BLUE= (5, 60, 156)
 COLOR_WHITE = (255, 255, 255)
 COLOR_PINK = (252, 20, 216)
+COLOR_GREEN = (0, 128, 0)
 
 #E
 EVENT_ENEMY = pygame.USEREVENT + 1
@@ -19,10 +20,21 @@ ENTITY_SPEED = {
     'Enemy2Shot': 2,
 }
 
+ENTITY_DAMAGE = {
+    'Player1': 1,
+    'Player1Shot': 25,
+    'Player2': 1,
+    'Player2Shot': 20,
+    'Enemy1': 1,
+    'Enemy1Shot': 30,
+    'Enemy2': 1,
+    'Enemy2Shot': 30,
+}
+
 ENTITY_HEALTH = {
-    'Player1': 300,
+    'Player1': 100,
     'Player1Shot': 1,
-    'Player2': 300,
+    'Player2': 100,
     'Player2Shot': 1,
     'Enemy1': 50,
     'Enemy1Shot': 1,
@@ -30,11 +42,23 @@ ENTITY_HEALTH = {
     'Enemy2Shot': 1,
 }
 
+ENTITY_SCORE = {
+    'bgg': 0,
+    'Player1': 0,
+    'Player1Shot': 0,
+    'Player2': 0,
+    'Player2Shot': 0,
+    'Enemy1': 100,
+    'Enemy1Shot': 0,
+    'Enemy2': 125,
+    'Enemy2Shot': 0,
+}
+
 ENTITY_SHOT_DELAY = {
     'Player1': 20,
     'Player2': 15,
-    'Enemy1': 70,
-    'Enemy2': 70,
+    'Enemy1': 120,
+    'Enemy2': 120,
 }
 
 #M

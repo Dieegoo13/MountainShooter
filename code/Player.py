@@ -3,7 +3,7 @@
 import pygame
 
 from code.Const import ENTITY_SPEED, WIN_WIDTH, WIN_HEIGHT, PLAYER_KEY_UP, PLAYER_KEY_DOWN, PLAYER_KEY_RIGHT, \
-    PLAYER_KEY_LEFT, PLAYER_KEY_SHOOT, ENTITY_SHOT_DELAY
+    PLAYER_KEY_LEFT, PLAYER_KEY_SHOOT, ENTITY_SHOT_DELAY, ENTITY_HEALTH
 from code.Entity import Entity
 from code.PlayerShot import PlayerShot
 
@@ -11,12 +11,13 @@ from code.PlayerShot import PlayerShot
 class Player(Entity):
     def __init__(self, img_name: str, position: tuple, player_id: str):
         super().__init__(img_name, position)
-        self.img_name = img_name  # agora guardamos o nome da imagem
-        self.player_id = player_id  # "Player1" ou "Player2"
+        self.img_name = img_name
+        self.player_id = player_id
         self.speed = ENTITY_SPEED[player_id]
-        self.lives = 3
         self.is_shooting = False
         self.shot_delay = ENTITY_SHOT_DELAY[self.player_id]
+        self.health = ENTITY_HEALTH[self.player_id]
+        self.score = 0
 
     def move(self):
         pressed_key = pygame.key.get_pressed()

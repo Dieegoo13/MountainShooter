@@ -6,7 +6,7 @@ import random
 import pygame
 from pygame import Surface, Rect
 
-from code.Const import COLOR_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME
+from code.Const import COLOR_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, COLOR_BLUE, COLOR_GREEN
 from code.Enemy import Enemy
 from code.EntityFactory import EntityFactory
 from pygame.font import Font
@@ -49,6 +49,7 @@ class Level:
                     choice = random.choice(('Enemy1', 'Enemy2'))
                     self.entity_list.append(EntityFactory.get_entity(choice))
 
+
             self.window.blit(self.background.surf, self.background.rect)
 
             for entity in list(self.entity_list):
@@ -60,6 +61,16 @@ class Level:
                         self.entity_list.append(shot)
 
                 self.window.blit(entity.surf, entity.rect)
+
+                if entity.name == 'Player1.png':
+                    self.level_text(20, f'Player1 - Health: {entity.health} ', COLOR_GREEN, (10, 10))
+                if entity.name == 'Player2.png':
+                    self.level_text(20, f'Player2 - Health: {entity.health}', COLOR_BLUE, (10, 40))
+                # if entity.name == 'Player1.png':
+                #     self.level_text(20, f'Player1 - Health: {entity.health} | Score: {entity.score}', COLOR_GREEN, (10, 10))
+                # if entity.name == 'Player2.png':
+                #     self.level_text(20, f'Player2 - Health: {entity.health} | Score: {entity.score}', COLOR_BLUE, (10, 40))
+
 
             #self.level_text(20, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', COLOR_WHITE, (10, 5))
             self.level_text(20, f'fps: {clock.get_fps():.0f}', COLOR_WHITE, (10, WIN_HEIGHT - 35))

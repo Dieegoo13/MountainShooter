@@ -8,5 +8,6 @@ class PlayerShot(Entity):
         super().__init__(img_name, position)
         self.player_id = player_id
 
+
     def move(self):
         self.rect.x += ENTITY_SPEED[self.player_id]

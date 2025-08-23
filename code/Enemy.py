@@ -9,6 +9,7 @@ class Enemy(Entity):
         super().__init__(img_name, position)
         self.name = enemy_id
         self.shot_delay = ENTITY_SHOT_DELAY[self.name]
+        self.score = 0
 
     def move(self):
         self.rect.centerx -= ENTITY_SPEED[self.name]
