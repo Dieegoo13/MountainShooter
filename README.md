@@ -2,7 +2,7 @@
   <tr>
     <td><img src="./asset/Enemy1.png" width="100px" /></td>
     <td align="center">
-      <h1 style="margin: 0; font-weight: bold;">DashSubmarine 🌊🚤</h1>
+      <h1 style="margin: 0; font-weight: bold;">Dash Submarine 🌊🚤</h1>
     </td>
     <td><img src="./asset/Enemy1.png" width="100px" /></td>
   </tr>
